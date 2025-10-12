@@ -29,7 +29,7 @@ public class ConfigManager {
 
     public static int getBlockEntityRenderDistance() {
         try {
-            return Math.max(64, getConfig().getRenderDistanceBlocks()); // Minimum 64 blocks
+            return Math.max(64, getConfig().getRenderDistanceBlocks()); // Minimum 64 blocks (4 chunks)
         } catch (Exception e) {
             Farblockentity.LOGGER.error("Error getting render distance, using default", e);
             return 256;
@@ -42,7 +42,8 @@ public class ConfigManager {
     }
 
     public static void setRenderDistanceChunks(int chunks) {
-        if (chunks >= 1 && chunks <= 32) {
+        // Updated range: 4 to 32 chunks
+        if (chunks >= 4 && chunks <= 32) {
             try {
                 getConfig().renderDistanceChunks = chunks;
                 getConfig().save();
@@ -56,7 +57,7 @@ public class ConfigManager {
                 Farblockentity.LOGGER.error("Failed to save config", e);
             }
         } else {
-            Farblockentity.LOGGER.warn("Invalid render distance chunks: {}, must be between 1 and 32", chunks);
+            Farblockentity.LOGGER.warn("Invalid render distance chunks: {}, must be between 4 and 32", chunks);
         }
     }
 
@@ -64,7 +65,6 @@ public class ConfigManager {
         try {
             MinecraftClient client = MinecraftClient.getInstance();
             if (client != null && client.worldRenderer != null) {
-                // This will force Minecraft to recalculate which block entities are in range
                 client.worldRenderer.scheduleTerrainUpdate();
             }
         } catch (Exception e) {
