@@ -8,10 +8,11 @@
 		"IlyRash"
 	],
 	"contact": {
-      "modrinth": "https://modrinth.com/mod/pebbles",
-      "curseforge": "https://www.curseforge.com/minecraft/mc-mods/pebblesmod",
-      "sources": "https://github.com/ilyrash/PebblesMod",
-      "issues": "https://github.com/ilyrash/PebblesMod/issues"
+      "modrinth": "https://modrinth.com/mod/farblockentity",
+      "curseforge": "https://www.curseforge.com/minecraft/mc-mods/farblockentity",
+      "sources": "https://github.com/ilyrash/FarBlockEntity",
+      "issues": "https://github.com/ilyrash/FarBlockEntity/issues",
+      "support-Me": "https://ko-fi.com/ilyrash"
 	},
 	"license": "MIT",
 	"icon": "assets/farblockentity/icon.png",
