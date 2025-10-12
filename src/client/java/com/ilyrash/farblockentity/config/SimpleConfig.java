@@ -2,6 +2,7 @@ package com.ilyrash.farblockentity.config;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.ilyrash.farblockentity.Farblockentity;
 import net.fabricmc.loader.api.FabricLoader;
 import java.io.File;
 import java.io.FileReader;
@@ -15,25 +16,37 @@ public class SimpleConfig {
     public int renderDistanceChunks = 16;
 
     public static SimpleConfig load() {
+        // Create default config first
+        SimpleConfig defaultConfig = new SimpleConfig();
+
         if (CONFIG_FILE.exists()) {
             try (FileReader reader = new FileReader(CONFIG_FILE)) {
-                return GSON.fromJson(reader, SimpleConfig.class);
-            } catch (IOException e) {
-                e.printStackTrace();
+                SimpleConfig loadedConfig = GSON.fromJson(reader, SimpleConfig.class);
+
+                // Validate loaded config
+                if (loadedConfig.renderDistanceChunks >= 1 && loadedConfig.renderDistanceChunks <= 32) {
+                    return loadedConfig;
+                } else {
+                    Farblockentity.LOGGER.warn("Invalid render distance in config: {}, using default", loadedConfig.renderDistanceChunks);
+                }
+            } catch (Exception e) {
+                Farblockentity.LOGGER.error("Failed to load config file: {}", e.getMessage());
             }
         }
 
-        // Save default config if it doesn't exist
-        SimpleConfig config = new SimpleConfig();
-        config.save();
-        return config;
+        // Save default config
+        defaultConfig.save();
+        return defaultConfig;
     }
 
     public void save() {
-        try (FileWriter writer = new FileWriter(CONFIG_FILE)) {
-            GSON.toJson(this, writer);
+        try {
+            CONFIG_FILE.getParentFile().mkdirs();
+            try (FileWriter writer = new FileWriter(CONFIG_FILE)) {
+                GSON.toJson(this, writer);
+            }
         } catch (IOException e) {
-            e.printStackTrace();
+            Farblockentity.LOGGER.error("Failed to save config: {}", e.getMessage());
         }
     }
 

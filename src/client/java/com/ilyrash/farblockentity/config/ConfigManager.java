@@ -5,49 +5,70 @@ import net.minecraft.client.MinecraftClient;
 
 public class ConfigManager {
     private static SimpleConfig config;
+    private static boolean initialized = false;
 
     public static void loadConfig() {
-        config = SimpleConfig.load();
+        try {
+            config = SimpleConfig.load();
+            initialized = true;
+            Farblockentity.LOGGER.info("FarBlockEntity config loaded: {} chunks ({} blocks)",
+                    config.renderDistanceChunks, config.getRenderDistanceBlocks());
+        } catch (Exception e) {
+            Farblockentity.LOGGER.error("Failed to load config, using defaults", e);
+            config = new SimpleConfig();
+            initialized = false;
+        }
     }
 
     public static SimpleConfig getConfig() {
-        if (config == null) {
+        if (!initialized) {
             loadConfig();
         }
         return config;
     }
 
     public static int getBlockEntityRenderDistance() {
-        return getConfig().getRenderDistanceBlocks();
+        try {
+            return Math.max(64, getConfig().getRenderDistanceBlocks()); // Minimum 64 blocks
+        } catch (Exception e) {
+            Farblockentity.LOGGER.error("Error getting render distance, using default", e);
+            return 256;
+        }
     }
 
     public static double getBlockEntityRenderDistanceSquared() {
-        return getConfig().getRenderDistanceSquared();
+        int distance = getBlockEntityRenderDistance();
+        return (double) distance * distance;
     }
 
     public static void setRenderDistanceChunks(int chunks) {
         if (chunks >= 1 && chunks <= 32) {
-            getConfig().renderDistanceChunks = chunks;
-            getConfig().save();
-            Farblockentity.LOGGER.info("Block entity render distance changed to {} chunks ({} blocks)", chunks, chunks * 16);
+            try {
+                getConfig().renderDistanceChunks = chunks;
+                getConfig().save();
+                initialized = true;
 
-            // Force refresh of block entity renderers
-            refreshBlockEntityRenderers();
+                int blocks = chunks * 16;
+                Farblockentity.LOGGER.info("Block entity render distance changed to {} chunks ({} blocks)", chunks, blocks);
+
+                refreshBlockEntityRenderers();
+            } catch (Exception e) {
+                Farblockentity.LOGGER.error("Failed to save config", e);
+            }
+        } else {
+            Farblockentity.LOGGER.warn("Invalid render distance chunks: {}, must be between 1 and 32", chunks);
         }
     }
 
     private static void refreshBlockEntityRenderers() {
-        // This forces Minecraft to reload block entity renderers with the new distance
-        MinecraftClient client = MinecraftClient.getInstance();
-        if (client != null && client.worldRenderer != null) {
-            // Force chunk updates which will reload block entity render distances
-            client.worldRenderer.scheduleTerrainUpdate();
-
-            // If the world is loaded, we can also try to refresh the renderer cache
-            if (client.world != null) {
-                // This will cause block entities to re-check their render distance
-                client.worldRenderer.reload();
+        try {
+            MinecraftClient client = MinecraftClient.getInstance();
+            if (client != null && client.worldRenderer != null) {
+                // This will force Minecraft to recalculate which block entities are in range
+                client.worldRenderer.scheduleTerrainUpdate();
             }
+        } catch (Exception e) {
+            Farblockentity.LOGGER.debug("Could not refresh block entity renderers", e);
         }
     }
 }

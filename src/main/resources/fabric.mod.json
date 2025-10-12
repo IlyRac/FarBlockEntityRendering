@@ -2,7 +2,7 @@
 	"schemaVersion": 1,
 	"id": "farblockentity",
 	"version": "1.0",
-	"name": "farblockentity",
+	"name": "Far Block Entity",
 	"description": "Extends block entity render distance beyond the default 64-block limit.",
 	"authors": [
 		"IlyRash"
@@ -12,7 +12,7 @@
       "curseforge": "https://www.curseforge.com/minecraft/mc-mods/farblockentity",
       "sources": "https://github.com/ilyrash/FarBlockEntity",
       "issues": "https://github.com/ilyrash/FarBlockEntity/issues",
-      "support-Me": "https://ko-fi.com/ilyrash"
+      "support-me": "https://ko-fi.com/ilyrash"
 	},
 	"license": "MIT",
 	"icon": "assets/farblockentity/icon.png",

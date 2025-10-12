@@ -33,6 +33,19 @@ loom {
 		}
 	}
 
+    runs {
+        client {
+            client()
+            setConfigName("Fabric Client")
+            ideConfigGenerated(true)
+            runDir("run")
+        }
+    }
+
+    mixin {
+        defaultRefmapName = "farblockentity.refmap.json"
+    }
+
 }
 
 fabricApi {
