@@ -6,7 +6,7 @@
 
 ## 🎯 What Does This Mod Do?
 
-<img width="1920" height="1080" alt="1" src="https://github.com/user-attachments/assets/57a91954-8d1c-4165-9853-4b705240322d" />
+![What It Does](https://cdn.modrinth.com/data/cached_images/347f638eea0c2965ab638960eb2c3507d4859d21.png)
 
 Tired of chests, signs, and other block entities disappearing just 64 blocks away? **Far Block Entity** lets you customize the render distance for all block entities, extending it up to 512 blocks (32 chunks)!
 
@@ -14,14 +14,13 @@ Tired of chests, signs, and other block entities disappearing just 64 blocks awa
 
 ## ✨ Features
 
-<img width="1920" height="1080" alt="2" src="https://github.com/user-attachments/assets/623a6502-e399-4416-98a7-cbff987c211d" />
-
+![Rendering Block Entity](https://cdn.modrinth.com/data/cached_images/9b8285a42f11519532b0d40cd4dd84644d97ad90.png)
 
 - **📦 All Block Entities**: Affects chests, signs, beds, banners, and more
 - **⚖️ Performance Friendly**: Choose your preferred balance between visibility and performance
 
-<img width="1920" height="986" alt="5" src="https://github.com/user-attachments/assets/da562200-c910-4644-bfd3-8cfdbd693af4" />
-
+![Configuration Menu](https://cdn.modrinth.com/data/cached_images/422b9285664d639ebeb40cf4dd4d7e4a3502cbbe_0.webp)
+  
 - **🔧 Configurable Distance**: Set block entity render distance from 64 to 512 blocks (4-32 chunks)
 - **⚡ Instant Application**: Changes take effect immediately - no restart required!
 - **🎮 Easy Configuration**: Built-in ModMenu support for seamless in-game configuration
@@ -33,8 +32,18 @@ Tired of chests, signs, and other block entities disappearing just 64 blocks awa
 
 ---
 
-[Support Me](https://ko-fi.com/ilyrash)
+## 🔗 Links
 
-[Report Issues](https://github.com/ilyrash/FarBlockEntity/issues)
+[💝 Support Me](https://ko-fi.com/ilyrash)
+
+[🐛 Report Issues](https://github.com/ilyrash/FarBlockEntity/issues)
+
+[📦 CurseForge](https://www.curseforge.com/minecraft/mc-mods/farblockentity)
+
+[📦 modrinth](https://modrinth.com/mod/farblockentity)
+
+[🔗 Source Code](https://github.com/ilyrash/FarBlockEntity)
+
+---
 
 *Fabric API | ModMenu | MIT License*
