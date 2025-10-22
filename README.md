@@ -36,13 +36,9 @@ Tired of chests, signs, and other block entities disappearing just 64 blocks awa
 
 [💝 Support Me](https://ko-fi.com/ilyrash)
 
-[🐛 Report Issues](https://github.com/ilyrash/FarBlockEntity/issues)
-
 [📦 CurseForge](https://www.curseforge.com/minecraft/mc-mods/farblockentity)
 
 [📦 modrinth](https://modrinth.com/mod/farblockentity)
-
-[🔗 Source Code](https://github.com/ilyrash/FarBlockEntity)
 
 ---
 
