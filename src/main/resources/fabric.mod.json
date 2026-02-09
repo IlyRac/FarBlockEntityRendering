@@ -1,0 +1,48 @@
+{
+	"schemaVersion": 1,
+	"id": "farblockentityrendering",
+	"version": "${version}",
+	"name": "Far Block Entity Rendering",
+	"description": "Extends block entity rendering distance far beyond the default 64-block limit.",
+	"authors": [
+		"IlyRac"
+	],
+	"custom": {
+		"modmenu": {
+			"links": {
+				"Support-Me": "https://ko-fi.com/ilyrac",
+				"License": ""
+			}
+		}
+	},
+	"license": "IlyRac License",
+	"icon": "assets/farblockentityrendering/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.ilyrac.farblockentityrendering.FarBlockEntityRendering"
+		],
+		"client": [
+			"com.ilyrac.farblockentityrendering.FarBlockEntityRenderingClient"
+		],
+		"modmenu": [
+			"com.ilyrac.farblockentityrendering.integration.ModMenuIntegration"
+		]
+	},
+	"mixins": [
+		"farblockentityrendering.mixins.json",
+		{
+			"config": "farblockentityrendering.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.17.3",
+		"minecraft": "~1.21.11",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"modmenu": "*"
+	}
+}
