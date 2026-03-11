@@ -1,50 +1,48 @@
 {
 	"schemaVersion": 1,
-	"id": "farblockentity",
-	"version": "1.0",
-	"name": "Far Block Entity",
-	"description": "Extends block entity render distance beyond the default 64-block limit.",
+	"id": "farblockentityrendering",
+	"version": "${version}",
+	"name": "Far Block Entity Rendering",
+	"description": "Extends block entity rendering distance far beyond the default 64-block limit.",
 	"authors": [
-		"IlyRash"
+		"IlyRac"
 	],
-    "custom": {
-      "modmenu": {
-        "links": {
-          "Support-Me": "https://ko-fi.com/ilyrash"
-        }
-      }
-    },
-	"license": "MIT",
-	"icon": "assets/farblockentity/icon.png",
+	"custom": {
+		"modmenu": {
+			"links": {
+				"Support-Me": "https://ko-fi.com/ilyrac",
+				"License": "https://github.com/IlyRac/FarBlockEntityRendering/blob/main/LICENSE.md"
+			}
+		}
+	},
+	"license": "IlyRac License",
+	"icon": "assets/farblockentityrendering/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.ilyrash.farblockentity.Farblockentity"
+			"com.ilyrac.farblockentityrendering.FarBlockEntityRendering"
 		],
 		"client": [
-			"com.ilyrash.farblockentity.FarblockentityClient"
+			"com.ilyrac.farblockentityrendering.FarBlockEntityRenderingClient"
 		],
-		"fabric-datagen": [
-			"com.ilyrash.farblockentity.FarblockentityDataGenerator"
-		],
-        "modmenu": [
-          "com.ilyrash.farblockentity.integration.ModMenuIntegration"
-        ]
+		"modmenu": [
+			"com.ilyrac.farblockentityrendering.integration.ModMenuIntegration"
+		]
 	},
 	"mixins": [
-		"farblockentity.mixins.json",
+		"farblockentityrendering.mixins.json",
 		{
-			"config": "farblockentity.client.mixins.json",
+			"config": "farblockentityrendering.client.mixins.json",
 			"environment": "client"
 		}
 	],
 	"depends": {
-		"fabricloader": ">=0.17.2",
-		"minecraft": "~1.21.10",
+		"fabricloader": ">=0.17.3",
+		"minecraft": "~1.21.11",
 		"java": ">=21",
 		"fabric-api": "*"
 	},
 	"suggests": {
-        "modmenu": "*"
+		"modmenu": "*"
 	}
 }
