@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.ilyrash.farblockentity.mixin.client",
+  "compatibilityLevel": "JAVA_21",
+  "refmap": "farblockentity.client.refmap.json",
+  "client": [
+    "BlockEntityRendererInterfaceMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
