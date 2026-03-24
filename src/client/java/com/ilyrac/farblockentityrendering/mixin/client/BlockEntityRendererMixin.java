@@ -13,7 +13,7 @@ public interface BlockEntityRendererMixin<T extends BlockEntity> {
     /**
         @author IlyRac
         @reason Extend Block Entity Rendering
-     */
+    **/
     @Overwrite
     default boolean shouldRender(T blockEntity, Vec3 cameraPos) {
         double dist = Vec3.atCenterOf(blockEntity.getBlockPos())
