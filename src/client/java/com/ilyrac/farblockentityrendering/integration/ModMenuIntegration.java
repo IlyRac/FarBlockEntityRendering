@@ -3,7 +3,7 @@ package com.ilyrac.farblockentityrendering.integration;
 import com.ilyrac.farblockentityrendering.config.ConfigManager;
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.AbstractSliderButton;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
@@ -33,7 +33,6 @@ public class ModMenuIntegration implements ModMenuApi {
 
             int currentChunks = ConfigManager.getConfig().renderDistanceChunks;
 
-            // Slider
             chunkSlider = new ChunkSlider(cx - 150, cy, 305, 20, currentChunks, 4, 32);
             addRenderableWidget(chunkSlider);
 
@@ -42,30 +41,27 @@ public class ModMenuIntegration implements ModMenuApi {
             for (int i = 0; i < presets.length; i++) {
                 int preset = presets[i];
                 int x = cx - 150 + (i % 2) * 155;
-                int y = cy + 35 + (i / 2) * 25; // compact spacing
+                int y = cy + 35 + (i / 2) * 25;
                 addRenderableWidget(Button.builder(
                         Component.literal(preset + " chunks (" + (preset * 16) + " blocks)"),
-                        b -> chunkSlider.setSliderValue(preset)
+                        _ -> chunkSlider.setSliderValue(preset)
                 ).bounds(x, y, 150, 20).build());
             }
 
             // Done button
             addRenderableWidget(Button.builder(
                     Component.literal("Done"),
-                    b -> minecraft.setScreen(parent)
+                    _ -> minecraft.setScreen(parent)
             ).bounds(cx - 60, cy + 160, 120, 20).build());
         }
 
         @Override
-        public void render(@NonNull GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
-            super.render(guiGraphics, mouseX, mouseY, partialTick);
-
-            guiGraphics.drawCenteredString(this.font, this.title, width / 2, 15, 0xFFFFFFFF);
-
+        public void extractRenderState(@NonNull GuiGraphicsExtractor graphics, int mouseX, int mouseY, float partialTick) {
+            super.extractRenderState(graphics, mouseX, mouseY, partialTick);
+            graphics.centeredText(this.font, this.title, this.width / 2, 15, 0xFFFFFFFF);
             Component warning = Component.literal("Warning: High values can significantly impact FPS in areas with many block entities.")
-                    .withStyle(style -> style.withColor(0xFFFFFF00));
-
-            guiGraphics.drawCenteredString(this.font, warning, this.width / 2, 30, -1);
+                    .withStyle(style -> style.withColor(0xFFFF5555));
+            graphics.centeredText(this.font, warning, this.width / 2, 30, 0xFFFFFFFF);
         }
 
         private static class ChunkSlider extends AbstractSliderButton {
@@ -94,7 +90,6 @@ public class ModMenuIntegration implements ModMenuApi {
                 return (int) Math.round(this.value * (max - min) + min);
             }
 
-            // update the slider
             public void setSliderValue(int newValue) {
                 this.value = (newValue - min) / (double) (max - min);
                 updateMessage();
