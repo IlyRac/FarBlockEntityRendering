@@ -1,4 +1,4 @@
-package com.ilyrac.farblockentityrendering.config;
+package com.ilyrac.farblockentityrendering.client.config;
 
 import com.ilyrac.farblockentityrendering.FarBlockEntityRendering;
 import net.minecraft.client.Minecraft;
@@ -47,7 +47,10 @@ public class ConfigManager {
 
     private static void refreshRenderers() {
         try {
-            Minecraft.getInstance().levelRenderer.allChanged();
+            Minecraft mc = Minecraft.getInstance();
+            if (mc.level != null) {
+                mc.levelRenderer.sectionOcclusionGraph().invalidate();
+            }
         } catch (Exception e) {
             FarBlockEntityRendering.LOGGER.warn("Renderer refresh failed", e);
         }

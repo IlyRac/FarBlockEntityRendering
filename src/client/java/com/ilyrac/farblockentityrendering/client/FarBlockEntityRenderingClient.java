@@ -1,6 +1,7 @@
-package com.ilyrac.farblockentityrendering;
+package com.ilyrac.farblockentityrendering.client;
 
-import com.ilyrac.farblockentityrendering.config.ConfigManager;
+import com.ilyrac.farblockentityrendering.FarBlockEntityRendering;
+import com.ilyrac.farblockentityrendering.client.config.ConfigManager;
 import net.fabricmc.api.ClientModInitializer;
 
 public class FarBlockEntityRenderingClient implements ClientModInitializer {

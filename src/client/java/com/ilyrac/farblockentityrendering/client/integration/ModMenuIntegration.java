@@ -1,6 +1,6 @@
-package com.ilyrac.farblockentityrendering.integration;
+package com.ilyrac.farblockentityrendering.client.integration;
 
-import com.ilyrac.farblockentityrendering.config.ConfigManager;
+import com.ilyrac.farblockentityrendering.client.config.ConfigManager;
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
@@ -51,7 +51,8 @@ public class ModMenuIntegration implements ModMenuApi {
             // Done button
             addRenderableWidget(Button.builder(
                     Component.literal("Done"),
-                    _ -> minecraft.setScreen(parent)
+                    // CHANGED: Redirected screen navigation through the .gui layer manager
+                    _ -> minecraft.gui.setScreen(parent)
             ).bounds(cx - 60, cy + 160, 120, 20).build());
         }
 
