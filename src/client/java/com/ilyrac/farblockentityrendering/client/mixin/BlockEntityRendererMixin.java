@@ -1,6 +1,6 @@
-package com.ilyrac.farblockentityrendering.mixin.client;
+package com.ilyrac.farblockentityrendering.client.mixin;
 
-import com.ilyrac.farblockentityrendering.config.ConfigManager;
+import com.ilyrac.farblockentityrendering.client.config.ConfigManager;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.phys.Vec3;

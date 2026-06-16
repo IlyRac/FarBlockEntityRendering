@@ -1,11 +1,14 @@
 {
 	"required": true,
-	"package": "com.ilyrac.farblockentityrendering.mixin.client",
-	"compatibilityLevel": "JAVA_21",
+	"package": "com.ilyrac.farblockentityrendering.client.mixin",
+	"compatibilityLevel": "JAVA_25",
 	"client": [
 		"BlockEntityRendererMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
 	}
 }
