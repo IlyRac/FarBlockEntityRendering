@@ -40,7 +40,7 @@
 <details>
   <summary>✨ Features</summary>
   <ul>
-    <li><strong>All Block Entities</strong>: Affects chests, signs, beds, banners, and more</li>
+    <li><strong>All Block Entities</strong>: Affects chests, shulker boxes, heads, banners, and more</li>
     <li><strong>Performance Friendly</strong>: Choose your preferred balance between visibility and performance</li>
     <li><strong>Configurable Distance</strong>: Set block entity render distance from 64 to 512 blocks (4-32 chunks)</li>
     <li><strong>Instant Application</strong>: Changes take effect immediately - no restart required!</li>
